@@ -1,7 +1,7 @@
 from datetime import datetime
 import os
 
-def generate_log(data):
+def generate_log(data ):
     # TODO: Implement log generation logic
 
     # STEP 1: Validate input
@@ -16,4 +16,30 @@ def generate_log(data):
 
     # STEP 4: Print a confirmation message with the filename
 
-    pass
+    if not isinstance(data, list):
+        raise ValueError("Data must be a list")
+
+    filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
+
+
+    with open(filename, "w") as file:
+        for entry in data:
+            file.write(f"{entry}\n")
+
+
+    with open(filename, "w") as file:
+        for entry in data:
+            file.write(f"{entry}\n")
+
+
+    return filename
+
+if __name__ == "__main__":
+    log_data = [
+        "User logged in",
+        "User updated profile",
+        "Report exported"
+    ]
+
+    generate_log(log_data)
+
